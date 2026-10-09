@@ -1,0 +1,55 @@
+digraph AgreementFSA {
+  graph [
+    rankdir=LR
+    bgcolor="transparent"
+    pad=0.25
+    nodesep=0.45
+    ranksep=0.65
+    fontname="Helvetica"
+    label="Finite-State Automaton for Simple Subject-Verb Agreement"
+    labelloc=t
+    fontsize=20
+    fontcolor="#1F2937"
+  ];
+
+  node [
+    shape=circle
+    fontname="Helvetica"
+    fontsize=14
+    penwidth=1.8
+    color="#334155"
+    fontcolor="#0F172A"
+    style="filled"
+    fillcolor="white"
+    width=1.25
+    height=1.25
+  ];
+
+  edge [
+    fontname="Helvetica"
+    fontsize=12
+    color="#475569"
+    fontcolor="#334155"
+    penwidth=1.6
+    arrowsize=0.85
+  ];
+
+  start_point [shape=point, width=0.18, color="#334155"];
+  START [fillcolor="#E0F2FE", color="#0284C7", label="START"];
+  SINGULAR [fillcolor="#DCFCE7", color="#16A34A", label="SINGULAR"];
+  PLURAL [fillcolor="#FEF3C7", color="#D97706", label="PLURAL"];
+  GOOD [shape=doublecircle, fillcolor="#DCFCE7", color="#15803D", label="GOOD"];
+  REJECT [fillcolor="#FEE2E2", color="#DC2626", label="REJECT"];
+
+  start_point -> START;
+  START -> SINGULAR [label="the dog"];
+  START -> PLURAL [label="the dogs"];
+
+  SINGULAR -> GOOD [label="barks"];
+  SINGULAR -> REJECT [label="bark"];
+
+  PLURAL -> GOOD [label="bark"];
+  PLURAL -> REJECT [label="barks"];
+
+  { rank=same; GOOD; REJECT; }
+}

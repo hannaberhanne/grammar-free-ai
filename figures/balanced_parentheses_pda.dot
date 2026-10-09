@@ -1,0 +1,45 @@
+digraph BalancedPDA {
+  graph [
+    rankdir=LR
+    bgcolor="transparent"
+    pad=0.25
+    nodesep=0.55
+    ranksep=0.7
+    fontname="Helvetica"
+    label="Pushdown Automaton for Balanced Parentheses"
+    labelloc=t
+    fontsize=20
+    fontcolor="#1F2937"
+  ];
+
+  node [
+    shape=circle
+    fontname="Helvetica"
+    fontsize=14
+    penwidth=1.8
+    color="#334155"
+    fontcolor="#0F172A"
+    style="filled"
+    fillcolor="white"
+    width=1.25
+    height=1.25
+  ];
+
+  edge [
+    fontname="Helvetica"
+    fontsize=12
+    color="#475569"
+    fontcolor="#334155"
+    penwidth=1.6
+    arrowsize=0.85
+  ];
+
+  start_point [shape=point, width=0.18, color="#334155"];
+  q [fillcolor="#E0F2FE", color="#0284C7", label="q"];
+  accept [shape=doublecircle, fillcolor="#DCFCE7", color="#15803D", label="ACCEPT"];
+
+  start_point -> q;
+  q -> q [label="read (\npush ("];
+  q -> q [label="read )\npop ("];
+  q -> accept [label="input done\nstack empty"];
+}
